@@ -155,7 +155,7 @@ def train_op(
 
     model = keras.models.load_model(pre_model)
 
-    model.fit(images, labels, epochs=200)
+    model.fit(images, labels, epochs=30)
 
     model.save(trained_model)
 

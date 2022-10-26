@@ -119,6 +119,7 @@ def main(n_hidden_1, n_hidden_2, dropout, learning_rate, training_steps):
     # Stochastic gradient descent optimizer.
     optimizer = tf.keras.optimizers.SGD(learning_rate)
     # Run training for the given number of steps.
+
     for step, (batch_x, batch_y) in enumerate(train_data.take(training_steps), 1):
         # Run the optimization to update W and b values.
         run_optimization(neural_net, optimizer, batch_x, batch_y)
@@ -130,6 +131,9 @@ def main(n_hidden_1, n_hidden_2, dropout, learning_rate, training_steps):
             print("train-step: %i, train-loss: %f, train-accuracy: %f" % (step, loss, acc))
 
     # Test model on validation set.
+    neural_net.summary()
+
+    print(neural_net.fc1)
     pred = neural_net(x_test, is_training=False)
     print("Test-accuracy: %f" % accuracy(pred, y_test))
     neural_net.save('mnist_model/1')
@@ -142,7 +146,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_hidden_layer_2', type=int, default =256, help='input int')
     parser.add_argument('--dropout', type=float, default =1, help='input 0~1 float')
     parser.add_argument('--learning_rate', type=float, default =0.01, help='recommended 0.01')
-    parser.add_argument('--epoch', type=int, default =2000, help='recommended 0.9')
+    parser.add_argument('--epoch', type=int, default =100, help='recommended 0.9')
     args = parser.parse_args()
 
     n_hidden_1, n_hidden_2, dropout, learning_rate, training_steps = args.num_hidden_layer_1, args.num_hidden_layer_2, args.dropout, args.learning_rate, args.epoch
