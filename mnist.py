@@ -146,7 +146,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_hidden_layer_2', type=int, default =256, help='input int')
     parser.add_argument('--dropout', type=float, default =1, help='input 0~1 float')
     parser.add_argument('--learning_rate', type=float, default =0.01, help='recommended 0.01')
-    parser.add_argument('--epoch', type=int, default =100, help='recommended 0.9')
+    parser.add_argument('--epoch', type=int, default = 2000, help='recommended 0.9')
     args = parser.parse_args()
 
     n_hidden_1, n_hidden_2, dropout, learning_rate, training_steps = args.num_hidden_layer_1, args.num_hidden_layer_2, args.dropout, args.learning_rate, args.epoch
